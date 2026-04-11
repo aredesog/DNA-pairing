@@ -108,7 +108,6 @@ long int programacao_dinamica(char *s1, char *s2) {
     return pontuacao;
 }
 
-
 /**
  * Algoritmo Guloso (Greedy)
  * Realiza o alinhamento de forma gulosa, sempre escolhendo a melhor opção local.
