@@ -7,13 +7,16 @@ Nome: Diogo Silva Salgado                   Matrícula: 2024.1.08.007
 Nome: Carlos Eduardo Pereira dos Santos     Matrícula: 2024.2.08.001
 */
 
-#include "algoritimos.h"
+#include "algoritmos.h"
 #include <stdlib.h>  // Para usar malloc e free (alocação dinâmica)
 #include <string.h>  // Para usar strlen (tamanho da string)
 
 #define MATCH 2  // Se for par complementar (A-T, C-G)
 #define MISMACH -1  // Penalidade para bases que não se combinam
 #define GAP -2  // Penalidade para a inserção de um espaço (buraco) no alinhamento
+
+size_t memoria_programacao_dinamica = 0;
+size_t memoria_guloso = 0;
 
 /**
  * Retorna o maior valor entre três inteiros.
@@ -54,6 +57,8 @@ long int programacao_dinamica(char *s1, char *s2) {
 
     int m = strlen(s1);  // Tamanho da primeira string
     int n = strlen(s2);  // Tamanho da segunda string
+
+    memoria_programacao_dinamica = (size_t)(m + 1) * sizeof(int *);
     
      //Aloca um array de ponteiros (as linhas)
     int **matriz = (int**)malloc((m + 1) * sizeof(int *));
@@ -61,6 +66,7 @@ long int programacao_dinamica(char *s1, char *s2) {
     for(int i = 0; i <= m; i++){
         // Aloca cada linha da matriz
         matriz[i] = (int *)malloc((n + 1) * sizeof(int));
+        memoria_programacao_dinamica += (size_t)(n + 1) * sizeof(int);
     }
 
     // Inicialização da primeira coluna (alinhando s1 com GAPs)
@@ -111,6 +117,7 @@ long int programacao_dinamica(char *s1, char *s2) {
  // Para usar o strlen
 long int guloso(char *s1, char *s2) {
     long int pontuacao = 0;
+    memoria_guloso = 0;
 
     int i = 0, j = 0;
     int tam_s1 = strlen(s1);

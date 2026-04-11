@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/time.h>
-#include "algoritimos.h"
+#include "algoritmos.h"
 
 /***********************************
 ESTE ARQUIVO NÃO DEVE SER MODIFICADO
@@ -156,7 +156,7 @@ int main(int argc, char *argv[]) {
     gettimeofday(&end, NULL);
     tempo_dinamico = (end.tv_sec - start.tv_sec) * 1e6;
     tempo_dinamico = (tempo_dinamico + (end.tv_usec - start.tv_usec)) * 1e-6;
-    printf("Programação Dinâmica: \nResultado: %ld \nTempo: %f \n\n", resultado_dinamico, tempo_dinamico);
+    printf("Programação Dinâmica: \nResultado: %ld \nTempo: %f \nMemória utilizada (Programação Dinâmica): %zu \n\n", resultado_dinamico, tempo_dinamico, memoria_programacao_dinamica);
 
     // Medição do tempo para Guloso
     gettimeofday(&start, NULL);
@@ -164,7 +164,7 @@ int main(int argc, char *argv[]) {
     gettimeofday(&end, NULL);
     tempo_guloso = (end.tv_sec - start.tv_sec) * 1e6;
     tempo_guloso = (tempo_guloso + (end.tv_usec - start.tv_usec)) * 1e-6;
-    printf("Guloso: \nResultado: %ld \nTempo: %f \n", resultado_guloso, tempo_guloso);
+    printf("Guloso: \nResultado: %ld \nTempo: %f \nMemória utilizada (Guloso): %zu \n", resultado_guloso, tempo_guloso, memoria_guloso);
 
     // Liberação da memória das alocações dinâmicas após o uso em 'main'
     for (size_t i = 0; i < count; i++) {

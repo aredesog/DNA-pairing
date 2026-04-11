@@ -1,0 +1,25 @@
+## Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+env/
+.python-version
+
+## Build C
+src/*.o
+src/base
+src/base.exe
+src/resultados.csv
+
+## Logs e temporarios
+*.log
+*.tmp
+*.swp
+
+## VS Code e sistema
+.vscode/
+.DS_Store
+Thumbs.db
