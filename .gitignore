@@ -13,6 +13,8 @@ src/*.o
 src/base
 src/base.exe
 src/resultados.csv
+*.o
+*.exe
 
 ## Logs e temporarios
 *.log
