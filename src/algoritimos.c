@@ -2,9 +2,9 @@
 Participantes do grupo
 Nome: Marcos Felipe dos Reis Bento          Matrícula: 2025.1.08.018
 Nome: Guilherme de Oliveira Aredes          Matrícula: 2025.1.08.026
-Nome:                                       Matrícula:
-Nome:                                       Matrícula:
-Nome:                                       Matrícula:
+Nome: Érik Alexandre Vieira Peres           Matrícula: 2025.1.08.005 
+Nome: Diogo Silva Salgado                   Matrícula: 2024.1.08.007
+Nome: Carlos Eduardo Pereira dos Santos     Matrícula: 2024.2.08.001
 */
 
 #include "algoritimos.h"
