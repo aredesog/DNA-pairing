@@ -4,12 +4,18 @@ Este projeto implementa um algoritmo simples para realizar o **pareamento de uma
 
 ## 📌 Descrição
 
-O programa recebe uma sequência de DNA e gera sua sequência complementar com base nas seguintes regras:
+O objetivo deste projeto é implementar e avaliar algoritmos para realizar o alinhamento (pareamento) de sequências de DNA. O problema consiste em encontrar a melhor forma de sobrepor duas sequências de nucleotídeos (A, T, C, G) para maximizar a pontuação de pareamento, respeitando as regras biológicas de formação da dupla hélice.
 
 - Adenina (A) ↔ Timina (T)
 - Citosina (C) ↔ Guanina (G)
 
 Esse tipo de pareamento representa a estrutura básica da dupla hélice do DNA.
+
+## 🛠️ Algoritmos Implementados
+    O trabalho exige a resolução do problema utilizando dois paradigmas diferentes para análise de trade-offs entre eficiência otimalidade:
+
+    Programação Dinâmica: Algoritmo que busca a solução ótima global do alinhamento.
+    Algoritmo Guloso: Implementação com foco em velocidade de execução, cuja otimalidade é testada em comparação à Programação Dinâmica.
 
 ## 🚀 Funcionalidade
 
@@ -31,5 +37,5 @@ Guilherme de Oliveira Aredes
 Érik Alexandre Vieira Peres      
 
 Diogo Silva Salgado              
-     
+
 Carlos Eduardo Pereira dos Santos     
