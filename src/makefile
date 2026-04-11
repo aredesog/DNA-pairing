@@ -1,17 +1,17 @@
-# Makefile para o Trabalho Prático 2 - Pareamento de Sequências de DNA
-# Disciplina: DCE797 - AEDS 3
+# ESTE ARQUIVO NÃO DEVE SER MODIFICADO
+# O TRABALHO SERÁ AVALIADO UTILIZANDO UNICAMENTE ESTE MAKEFILE
 
 # Compilador a ser utilizado
 CC = gcc
 
 # Flags de compilação (avisos e debug)
-CFLAGS = -Wall -Wextra -g -std=c99
+CFLAGS = -Wall -Wextra -g
 
 # Nome do executável final
-TARGET = dna_aligner
+TARGET = base
 
 # Arquivos fonte
-SRCS = base.c algoritimos.c
+SRCS = base.c algoritmos.c
 
 # Objetos gerados a partir dos arquivos fonte
 OBJS = $(SRCS:.c=.o)
@@ -31,12 +31,9 @@ $(TARGET): $(OBJS)
 clean:
 	rm -f $(OBJS) $(TARGET)
 
-# Regra auxiliar para testar a execução ('make run')
+# Regra auxiliar para testar a execução lendo o arquivo 'bla' ('make run')
 run: $(TARGET)
-	./$(TARGET)
-
-# Regra para compilar e rodar
-test: clean all run
+	./$(TARGET) ../bla
 
 # Declaração das regras que não são arquivos
-.PHONY: all clean run test
+.PHONY: all clean run

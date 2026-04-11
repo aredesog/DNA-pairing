@@ -7,7 +7,7 @@ Nome:                                       Matrícula:
 Nome:                                       Matrícula:
 */
 
-#include "algoritmos.h"
+#include "algoritimos.h"
 #include <stdlib.h>  // Para usar malloc e free (alocação dinâmica)
 #include <string.h>  // Para usar strlen (tamanho da string)
 
@@ -108,51 +108,51 @@ long int programacao_dinamica(char *s1, char *s2) {
  * Realiza o alinhamento de forma gulosa, sempre escolhendo a melhor opção local.
  * A cada passo, compara: alinhamento de bases, gap em s1 ou gap em s2.
  */
+ // Para usar o strlen
 long int guloso(char *s1, char *s2) {
     long int pontuacao = 0;
-    
-    int m = strlen(s1);  // Tamanho da primeira string
-    int n = strlen(s2);  // Tamanho da segunda string
-    
-    int i = 0, j = 0;  // Índices para percorrer as strings
-    
-    // Percorre ambas as strings de forma simultânea
-    while (i < m && j < n) {
-        // Opção 1: Alinhar as bases atuais (pode ser match ou mismatch)
-        int alinhamento = pontos(s1[i], s2[j]);
-        
-        // Opção 2: Inserir gap em s1 (pular um caractere em s1)
-        int gap_s1 = GAP;
-        
-        // Opção 3: Inserir gap em s2 (pular um caractere em s2)
-        int gap_s2 = GAP;
-        
-        // Escolhe a opção que oferece o maior ganho imediato (guloso)
-        if (alinhamento >= gap_s1 && alinhamento >= gap_s2) {
-            // Melhor alinhar as bases atuais
-            pontuacao += alinhamento;
-            i++;
-            j++;
-        } else if (gap_s1 >= gap_s2) {
-            // Melhor inserir gap em s1
-            pontuacao += gap_s1;
-            i++;
+
+    int i = 0, j = 0;
+    int tam_s1 = strlen(s1);
+    int tam_s2 = strlen(s2);
+
+    while (i < tam_s1 && j < tam_s2) {
+        // Calcula a pontuação de alinhar s1[i] com s2[j] (Par "pareado", +2)
+        int alinhar;
+        if ((s1[i] == 'A' && s2[j] == 'T') || (s1[i] == 'T' && s2[j] == 'A') ||
+            (s1[i] == 'C' && s2[j] == 'G') || (s1[i] == 'G' && s2[j] == 'C')) {
+            alinhar = 2;
         } else {
-            // Melhor inserir gap em s2
-            pontuacao += gap_s2;
-            j++;
+            //Par errado (-1)
+            alinhar = -1;
+        }
+
+        int gap_s1 = -2, gap_s2 = -2; // Custo dos gaps
+
+        /* O if abaixo escolhe a opção de maior ganho imediato.
+        No caso, "alinhar" sempre é maior que gap_s1 e gap_s2, sendo a melhor solução imediata.
+        Pensando pelo lado lógico do problema, a comparação é redundante, pois
+        o valor de alinhar (-1 ou 2) sempre será maior que o do gap (-2).
+        Ou seja, poderíamos apenas incrementar i e j direto, sem o if.
+        Mas é interessante manter a comparação para tornar o entendimento mais claro. */
+
+        if (alinhar >= gap_s1 && alinhar >= gap_s2) { // alinhar é sempre > -2
+            // Alinha s1[i] com s2[j] e avança nas duas strings
+            pontuacao += alinhar;
+            i++; j++;
         }
     }
-    
-    // Processa caracteres restantes da string s1 com gaps
-    while (i < m) {
-        pontuacao += GAP;
+
+    /* Redundante para as instâncias de exemplo, onde as duas strings sempre têm o mesmo tamanho.
+   Caso contrário, "emparelha" os caracteres restantes da string maior com gaps. */
+    while (i < tam_s1) {
+        pontuacao += -2;
         i++;
     }
-    
-    // Processa caracteres restantes da string s2 com gaps
-    while (j < n) {
-        pontuacao += GAP;
+
+    // Mesma ideia do que foi dito no comentário anterior, mas pra s2.
+    while (j < tam_s2) {
+        pontuacao += -2;
         j++;
     }
 
