@@ -28,14 +28,4 @@ Esse tipo de pareamento representa a estrutura básica da dupla hélice do DNA.
 - Linguagem: C
 - Execução via terminal
 
-## Integrantes
-
-Marcos Felipe dos Reis Bento  
-
-Guilherme de Oliveira Aredes    
-
-Érik Alexandre Vieira Peres      
-
-Diogo Silva Salgado              
-
-Carlos Eduardo Pereira dos Santos     
+   
