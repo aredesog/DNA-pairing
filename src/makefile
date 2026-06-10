@@ -16,7 +16,15 @@ SRCS = base.c algoritmos.c
 # Objetos gerados a partir dos arquivos fonte
 OBJS = $(SRCS:.c=.o)
 
-# Regra padrão executada ao rodar apenas 'make'
+# Em Windows usamos PowerShell para remover os artefatos
+ifeq ($(OS),Windows_NT)
+CLEAN_CMD = powershell -NoProfile -Command "foreach ($$path in @('base.o','algoritmos.o','base','base.exe')) { Remove-Item -Force -ErrorAction SilentlyContinue -LiteralPath $$path }; exit 0"
+# Em Linux/Unix mantemos rm -f.
+else
+CLEAN_CMD = rm -f $(OBJS) $(TARGET)
+endif
+
+# Regra padrão executada ao rodar apenas 'make'j
 all: $(TARGET)
 
 # Regra para gerar o executável
@@ -29,7 +37,7 @@ $(TARGET): $(OBJS)
 
 # Regra para limpar os arquivos gerados pela compilação ('make clean')
 clean:
-	rm -f $(OBJS) $(TARGET)
+	$(CLEAN_CMD)
 
 # Regra auxiliar para testar a execução lendo o arquivo 'bla' ('make run')
 run: $(TARGET)
